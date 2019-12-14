@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
           _completed
               ? Success(
                   result: _result,
-                  reset: () {},
+                  reset: reset
                 )
               : SubmitForm(
                   gasCtrl: _gasCtrl,
@@ -58,6 +58,15 @@ class _HomePageState extends State<HomePage> {
         _busy = false;
         _completed = true;
       });
+    });
+  }
+
+  reset() {
+    setState(() {
+      _alcCtrl = new MoneyMaskedTextController();
+      _gasCtrl = new MoneyMaskedTextController();
+      _completed = false;
+      _busy = false;
     });
   }
 }
